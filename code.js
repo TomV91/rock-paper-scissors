@@ -33,18 +33,28 @@ function playRound(a, b) {
     } else return 0;
 }
 
+function game() {
+    let player_score = 0;
+    let computer_score = 0;
+    for (let i = 1; i < 6; i++) {
+        getComputerChoice();
+        getPlayerChoice();
+        switch (playRound(playerselection, computerselection)) {
+            case 1:
+                player_score++;
+                console.log(`Player won round ${i}. The current score is Player: ${player_score} | Computer: ${computer_score}`);
+                break;
+            case 2:
+                computer_score++;
+                console.log(`Computer won round ${i}. The current score is Player: ${player_score} | Computer: ${computer_score}`);
+                break;
+            case 0:
+                console.log(`Round ${i} was a draw. The current score is Player: ${player_score} | Computer: ${computer_score}`);
+                break;
+        }
+    }
+}
+
 let playerselection = '';
 let computerselection = '';
-getComputerChoice();
-getPlayerChoice();
-switch (playRound(playerselection, computerselection)) {
-    case 1:
-        console.log("Player wins!");
-        break;
-    case 2:
-        console.log("Computer wins!");
-        break;
-    case 0:
-        console.log("Draw!");
-        break;
-}
+game();
