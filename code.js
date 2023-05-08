@@ -34,27 +34,38 @@ function playRound(a, b) {
 }
 
 function game() {
-    let player_score = 0;
-    let computer_score = 0;
-    for (let i = 1; i < 6; i++) {
+    while (true) {
         getComputerChoice();
         getPlayerChoice();
         switch (playRound(playerselection, computerselection)) {
             case 1:
                 player_score++;
-                console.log(`Player won round ${i}. The current score is Player: ${player_score} | Computer: ${computer_score}`);
+                console.log(`Player won round ${round_counter}. The current score is Player: ${player_score} | Computer: ${computer_score}`);
                 break;
             case 2:
                 computer_score++;
-                console.log(`Computer won round ${i}. The current score is Player: ${player_score} | Computer: ${computer_score}`);
+                console.log(`Computer won round ${round_counter}. The current score is Player: ${player_score} | Computer: ${computer_score}`);
                 break;
             case 0:
-                console.log(`Round ${i} was a draw. The current score is Player: ${player_score} | Computer: ${computer_score}`);
+                console.log(`Round ${round_counter} was a draw. The current score is Player: ${player_score} | Computer: ${computer_score}`);
                 break;
         }
+        round_counter++;
+        if (player_score === 5 || computer_score === 5) {
+            break;
+        }
     }
+    game_over();
+}
+
+function game_over() {
+    alert(`The game is over. The final score was: Player: ${player_score} | Computer: ${computer_score}`);
+    alert("Please refresh your page to play another round.");
 }
 
 let playerselection = '';
 let computerselection = '';
+let player_score = 0;
+let computer_score = 0;
+let round_counter = 1;
 game();
