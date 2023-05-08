@@ -1,3 +1,5 @@
+// Initializing all functions
+
 function getComputerChoice() {
     let number = Math.floor(Math.random() * 3)
     switch (number) {
@@ -59,13 +61,14 @@ function game() {
 }
 
 function game_over() {
-    alert(`The game is over. The final score was: Player: ${player_score} | Computer: ${computer_score}`);
-    alert("Please refresh your page to play another round.");
+    alert(`The game is over. The final score was: Player: ${player_score} | Computer: ${computer_score}\nPlease refresh your page to play another round.`);
 }
+
+// Initializing variables and playing the game
 
 let playerselection = '';
 let computerselection = '';
 let player_score = 0;
 let computer_score = 0;
 let round_counter = 1;
-game();
+document.querySelector('#start').addEventListener('click', game);
