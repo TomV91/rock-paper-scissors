@@ -16,7 +16,7 @@ function getComputerChoice() {
 }
 
 function getPlayerChoice() {
-    playerselection = prompt("Please enter your choice: Rock, Paper or Scissors?").toLowerCase();
+    playerselection = prompt("Please enter your choice: Rock, Paper or Scissors?", "rock").toLowerCase();
 }
 
 function playRound(a, b) {
@@ -39,6 +39,7 @@ function game() {
     while (true) {
         getComputerChoice();
         getPlayerChoice();
+        console.log(`Player picked ${playerselection.toUpperCase()} and Computer picked ${computerselection.toUpperCase()}.`)
         switch (playRound(playerselection, computerselection)) {
             case 1:
                 player_score++;
