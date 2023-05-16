@@ -15,11 +15,31 @@ function getComputerChoice() {
     }
 }
 
-function getPlayerChoice() {
-    playerselection = prompt("Please enter your choice: Rock, Paper or Scissors?", "rock").toLowerCase();
+// function getPlayerChoice(e) {
+//     playerselection = e.target.id;
+// }
+
+function playRound(e) {
+    playerselection = e.target.id;
+    getComputerChoice();
+    console.log(`Player picked ${playerselection.toUpperCase()} and Computer picked ${computerselection.toUpperCase()}.`);
+    switch (checkWinner(playerselection, computerselection)) {
+        case 1:
+            player_score++;
+            console.log(`Player won round ${round_counter}. The current score is Player: ${player_score} | Computer: ${computer_score}`);
+            break;
+        case 2:
+            computer_score++;
+            console.log(`Computer won round ${round_counter}. The current score is Player: ${player_score} | Computer: ${computer_score}`);
+            break;
+        case 0:
+            console.log(`Round ${round_counter} was a draw. The current score is Player: ${player_score} | Computer: ${computer_score}`);
+            break;
+    }
+    round_counter++;
 }
 
-function playRound(a, b) {
+function checkWinner(a,b) {
     if (a === 'rock' && b === 'scissors') {
         return 1;
     } else if (a === 'rock' && b === 'paper') {
@@ -35,31 +55,14 @@ function playRound(a, b) {
     } else return 0;
 }
 
-function game() {
-    while (true) {
-        getComputerChoice();
-        getPlayerChoice();
-        console.log(`Player picked ${playerselection.toUpperCase()} and Computer picked ${computerselection.toUpperCase()}.`)
-        switch (playRound(playerselection, computerselection)) {
-            case 1:
-                player_score++;
-                console.log(`Player won round ${round_counter}. The current score is Player: ${player_score} | Computer: ${computer_score}`);
-                break;
-            case 2:
-                computer_score++;
-                console.log(`Computer won round ${round_counter}. The current score is Player: ${player_score} | Computer: ${computer_score}`);
-                break;
-            case 0:
-                console.log(`Round ${round_counter} was a draw. The current score is Player: ${player_score} | Computer: ${computer_score}`);
-                break;
-        }
-        round_counter++;
-        if (player_score === 5 || computer_score === 5) {
-            break;
-        }
-    }
-    game_over();
-}
+// function game() {
+//     while (true) {
+//         if (player_score === 5 || computer_score === 5) {
+//             break;
+//         }
+//     }
+//     game_over();
+// }
 
 function game_over() {
     alert(`The game is over. The final score was: Player: ${player_score} | Computer: ${computer_score}\nPlease refresh your page to play another round.`);
@@ -72,4 +75,10 @@ let computerselection = '';
 let player_score = 0;
 let computer_score = 0;
 let round_counter = 1;
-document.querySelector('#start').addEventListener('click', game);
+const start_btn = document.querySelector('#start');
+const results_text = document.querySelector('#results');
+const player_choices = document.querySelectorAll('.choice_btn');
+player_choices.forEach(choice => {
+    choice.addEventListener('click', playRound);
+})
+// document.querySelector('#start').addEventListener('click', game);
