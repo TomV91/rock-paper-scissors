@@ -83,7 +83,6 @@ function gameReset() {
         button.classList.toggle('hidden');
     })
     reset_btn.classList.toggle('hidden');
-    gameover_text.classList.toggle('hidden');
     results_text.classList.toggle('hidden');
 }
 
