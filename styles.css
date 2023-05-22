@@ -78,6 +78,10 @@ button {
     display: block;
 }
 
-#results, #gameover {
+#score_txt, #round_result, #gameover {
     margin: 1em 0;
+}
+
+#score_txt {
+    white-space: pre-line;
 }
