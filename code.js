@@ -67,6 +67,7 @@ function checkWinner(a,b) {
 }
 
 function gameStart() {
+    document.querySelector('#intro_txt').classList.toggle('hidden');
     start_btn.classList.toggle('hidden');
     player_choices.forEach(button => {
         button.classList.toggle('hidden');

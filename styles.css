@@ -16,8 +16,16 @@ body {
 }
 
 footer {
+    width: 100%;
     text-align: center;
-    padding: 20px;
+    padding: 21.44px;
+    background-color: #0a0f38;
+}
+
+button {
+    font-family: "Roboto", sans-serif;
+    padding: 20px 5px;
+    flex-basis: 140px;
 }
 
 #main_container {
@@ -31,10 +39,35 @@ footer {
     gap: 10px;
 }
 
-button {
-    font-family: "Roboto", sans-serif;
-    padding: 20px 5px;
-    flex-basis: 120px;
+#rock {
+    background-image: url(./images/rock.png);
+    background-size: 65%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: white;
+    height: 140px;
+}
+
+#paper {
+    background-image: url(./images/paper.png);
+    background-size: 65%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: white;
+    height: 140px;
+}
+
+#scissors {
+    background-image: url(./images/scissors.png);
+    background-size: 65%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: white;
+    height: 140px;
+}
+
+.emoji {
+    width: 50%;
 }
 
 .hidden {
